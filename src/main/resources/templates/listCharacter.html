@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of characters</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+    <h1>Character List</h1>
+    <a href="/addCharacter">Add Character</a>
+    <br/><br/>
+    <div>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>HP</th>
+                <th>Options</th>
+            </tr>
+            <tr th:each ="character : ${characterList}">
+                <td th:utext="${character.id}">...</td>
+                <td th:utext="${character.name}">...</td>
+                <td th:utext="${character.type}">...</td>
+                <td th:utext="${character.hp}">...</td>
+                <td>
+                    <a th:href="@{/edit/{char}(char=${character.id})}">Edit</a>
+                    <a th:href="@{/delete/{id}(id=${character.id})}">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

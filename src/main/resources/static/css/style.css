@@ -1,0 +1,22 @@
+h1 {
+    color:#0000FF;
+}
+
+h2 {
+    color:#FF0000;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 5px;
+}
+
+.createChamp{
+    margin-left: 50px;
+    width: 250px;
+    display: flex;
+    justify-content: space-between;
+}
