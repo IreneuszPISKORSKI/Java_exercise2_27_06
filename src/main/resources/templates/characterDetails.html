@@ -11,7 +11,7 @@
 <div>
     <form th:action="@{/edit/{id}(id=${characterForm.id})}"
           th:object="${characterForm}" method="POST">
-      <div class="createChamp"><label for="id">Id:</label><input type="number" min="1" id="id" th:field="*{id}" th:size="20" disabled /></div>
+<!--      <div class="createChamp"><label for="id">Id:</label><input type="number" min="1" id="id" th:field="*{id}" th:size="20" disabled /></div>-->
       <div class="createChamp"><label for="name">Name:</label><input type="text" id="name" th:field="*{name}" /></div>
       <div class="createChamp"><label for="mage">I am a Mage!</label><input type="radio" th:name="type" th:id="mage" id="mage" th:value="Mage" th:field="*{type}"/></div>
       <div class="createChamp"><label for="warrior">I am a Warrior!</label><input type="radio" th:name="type" th:id="warrior" id="warrior" th:value="Warrior" th:field="*{type}"/></div>
