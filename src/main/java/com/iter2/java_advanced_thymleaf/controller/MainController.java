@@ -1,7 +1,4 @@
 package com.iter2.java_advanced_thymleaf.controller;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
 
 import com.iter2.java_advanced_thymleaf.form.CharacterForm;
 import com.iter2.java_advanced_thymleaf.character.Character;
@@ -20,10 +17,6 @@ import org.springframework.web.client.RestTemplate;
 
 @Controller
 public class MainController {
-
-    private static final List<Character> characterList = new ArrayList<Character>();
-    private int lastId=0;
-
 
     @Value("${welcome.message}")
     private String message;
@@ -46,7 +39,7 @@ public class MainController {
     }
 
     @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.GET)
-    public String ditCharacterById(Model model, @PathVariable Integer id){
+    public String editCharacterById(Model model, @PathVariable int id){
         RestTemplate restTemplate = new RestTemplate();
         Character selectedCharacter = restTemplate.getForObject("http://localhost:8081/api/character/" + id, Character.class);
         if (selectedCharacter != null){
@@ -60,7 +53,7 @@ public class MainController {
     @RequestMapping(value = {"/edit/{id}"}, method = RequestMethod.POST)
     public String saveEditCharacter(Model model,//
                                 @ModelAttribute("characterForm") CharacterForm characterForm,
-                                @PathVariable Integer id){
+                                @PathVariable int id){
         String name = characterForm.getName();
         String type = characterForm.getType();
         int hp = characterForm.getHp();
@@ -105,15 +98,13 @@ public class MainController {
         if ( hp > 0 //
                 && name != null && name.length() > 0//
                 && type != null && type.length() > 0) {
-            lastId++;
-            int id = lastId;
 
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
 
             RestTemplate restTemplate = new RestTemplate();
 
-            Character newCharacter = new Character(id, name, type, hp);
+            Character newCharacter = new Character(name, type, hp);
 
             HttpEntity<Character> request = new HttpEntity<>(newCharacter, headers);
             restTemplate.postForEntity("http://localhost:8081/api/character", request , Character.class);

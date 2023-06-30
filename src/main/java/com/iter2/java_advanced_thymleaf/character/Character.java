@@ -17,6 +17,11 @@ public class Character {
         this.type = type;
         this.hp = hp;
     }
+    public Character(String name, String type, int hp){
+        this.name = name;
+        this.type = type;
+        this.hp = hp;
+    }
 
     public int getId() {
         return id;
