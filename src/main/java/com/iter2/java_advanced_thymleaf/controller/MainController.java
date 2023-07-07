@@ -105,9 +105,9 @@ public class MainController {
             RestTemplate restTemplate = new RestTemplate();
 
             Character newCharacter = new Character(name, type, hp);
-
+            newCharacter.setIdPlayer(69);
             HttpEntity<Character> request = new HttpEntity<>(newCharacter, headers);
-            restTemplate.postForEntity("http://localhost:8081/api/character", request , Character.class);
+            restTemplate.postForEntity("http://localhost:8080/game", request , Character.class);
             return "redirect:/listCharacter";
         }
 

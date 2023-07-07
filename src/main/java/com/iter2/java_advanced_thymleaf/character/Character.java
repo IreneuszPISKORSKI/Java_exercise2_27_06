@@ -3,6 +3,7 @@ package com.iter2.java_advanced_thymleaf.character;
 public class Character {
 
     private int id;
+    private int idPlayer;
     private String name;
     private String type;
     private int hp;
@@ -29,6 +30,14 @@ public class Character {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getIdPlayer() {
+        return idPlayer;
+    }
+
+    public void setIdPlayer(int idPlayer) {
+        this.idPlayer = idPlayer;
     }
 
     public String getName() {
